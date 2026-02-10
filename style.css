@@ -164,6 +164,16 @@ body {
     margin: 0 auto var(--spacing-md);
 }
 
+.highlight-marker {
+    background-color: var(--brand-yellow);
+    color: var(--brand-black);
+    padding: 0 8px;
+    font-weight: 700;
+    display: inline-block;
+    transform: rotate(-1deg);
+    margin-top: 8px;
+}
+
 /* Date Bar */
 .event-meta {
     display: flex;
@@ -370,70 +380,7 @@ body {
     /* Consistent shadow */
 }
 
-/* Bundle Card Specifics (Circular Overlap) */
-.card-bundle {
-    border: 3px solid var(--brand-purple);
-    /* Distinct border */
-}
 
-.double-frame {
-    display: flex !important;
-    /* Force flex */
-    width: auto !important;
-    /* Allow width to be determined by content */
-    height: 120px !important;
-    /* Maintain height */
-    justify-content: center;
-    align-items: center;
-
-    /* Override standard frame styles */
-    background: transparent !important;
-    border: none !important;
-    border-radius: 0 !important;
-    overflow: visible !important;
-    /* Allow circles to pop out if needed */
-}
-
-.double-frame::after {
-    display: none;
-    /* Hide checker pattern */
-}
-
-.speaker-img-half {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid var(--brand-black);
-    /* Individual borders */
-    background: #fff;
-    position: relative;
-    /* box-shadow removed as requested */
-    transition: transform 0.2s ease;
-}
-
-.speaker-img-half:first-child {
-    z-index: 2;
-    margin-right: -20px;
-    /* Overlap */
-}
-
-.speaker-img-half:last-child {
-    z-index: 1;
-}
-
-.card-bundle:hover .speaker-img-half:first-child {
-    transform: translateX(-5px) rotate(-5deg);
-}
-
-.card-bundle:hover .speaker-img-half:last-child {
-    transform: translateX(5px) rotate(5deg);
-}
-
-.tag-bundle {
-    background: var(--brand-purple);
-    color: #fff;
-}
 
 /* Footer */
 .footer {
@@ -470,9 +417,7 @@ body {
     color: var(--text-secondary);
 }
 
-.card-bundle .price-tag {
-    color: var(--brand-purple);
-}
+
 
 /* Responsive */
 @media (max-width: 768px) {
