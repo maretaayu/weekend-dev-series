@@ -141,13 +141,34 @@ body {
 
 .main-title {
     font-family: var(--font-heading);
-    font-size: clamp(3rem, 6vw, 4.5rem);
+    font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 900;
     line-height: 1.1;
     margin-bottom: var(--spacing-sm);
     color: var(--brand-orange);
     text-transform: uppercase;
+    text-transform: uppercase;
     text-shadow: 2px 2px 0px var(--brand-black);
+    min-height: 1.1em;
+    /* Prevent layout shift */
+}
+
+.main-title.cursor-blink::after {
+    content: '|';
+    animation: blink 1s step-end infinite;
+    color: var(--brand-orange);
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
 }
 
 .amp {
@@ -172,6 +193,22 @@ body {
     display: inline-block;
     transform: rotate(-1deg);
     margin-top: 8px;
+    animation: highlight-swipe 1s ease-out forwards;
+    animation-delay: 2.5s;
+    /* Wait for title to finish approximately */
+    background-size: 200% 100%;
+    background-image: linear-gradient(to right, transparent 50%, var(--brand-yellow) 50%);
+    background-position: 0% 0%;
+}
+
+@keyframes highlight-swipe {
+    from {
+        background-position: 0% 0%;
+    }
+
+    to {
+        background-position: -100% 0%;
+    }
 }
 
 /* Date Bar */

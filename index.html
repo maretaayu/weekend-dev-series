@@ -25,9 +25,9 @@
         <header class="hero">
             <div class="pill-badge">AI Dev Series</div>
             <h1 class="main-title">
-                404: Weekend Not Found?
+                Weekend Loading...
             </h1>
-            <p class="subtitle">We found it. Come explore OpenClaw & build fullstack apps.<br>
+            <p class="subtitle">Join this session to learn new things and build valuable apps.<br>
                 <span class="highlight-marker">100% of proceeds will be donated to charity.</span>
             </p>
 
@@ -144,6 +144,53 @@
     <footer class="footer">
         <p>&copy; 2026 AI Dev Series. <br>All proceeds from this event will be donated to charity.</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const titleElement = document.querySelector('.main-title');
+
+            // Sequence: 
+            // 1. Start with "Weekend Loading..."
+            // 2. Clear
+            // 3. Type "Oops, Fun Not Found 🥹"
+            // 4. Clear
+            // 5. Type "Why don't you join this session?"
+
+            const text1 = "Weekend Loading...";
+            const text2 = "Oops, Fun Not Found 🥹";
+            const text3 = "Why don't you join this session?";
+
+            // Initial clear
+            titleElement.textContent = "";
+
+            function typeString(text, callback) {
+                let i = 0;
+                titleElement.textContent = "";
+                titleElement.classList.remove('cursor-blink');
+
+                function typeChar() {
+                    if (i < text.length) {
+                        titleElement.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(typeChar, 80);
+                    } else {
+                        titleElement.classList.add('cursor-blink');
+                        if (callback) setTimeout(callback, 2000);
+                    }
+                }
+                typeChar();
+            }
+
+            // Start sequence
+            setTimeout(() => {
+                typeString(text1, () => {
+                    typeString(text2, () => {
+                        typeString(text3);
+                    });
+                });
+            }, 500);
+        });
+    </script>
 </body>
 
 </html>
