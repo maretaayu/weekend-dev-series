@@ -1,17 +1,17 @@
 :root {
-    --bg-main: #FFF8F3;
-    /* Light Cream/Peach */
+    --bg-main: #2F3BF6;
+    /* Vibrant Blue from Poster */
     --bg-card: #FFFFFF;
-    --text-primary: #1A1A1A;
-    --text-secondary: #4A4A4A;
+    /* White Card Background */
+    --text-primary: #FFFFFF;
+    --text-secondary: #E0E0E0;
 
-    --brand-orange: #F45D22;
-    /* Poster Orange */
-    --brand-purple: #5D22F4;
-    /* Poster Purple */
-    --brand-yellow: #FFD93D;
+    --brand-orange: #FF8F50;
+    /* Adjusting to fit better if needed, or keep for highlights */
+    --brand-yellow: #FFD600;
     /* Poster Yellow */
     --brand-black: #000000;
+    --brand-white: #FFFFFF;
 
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Space Grotesk', sans-serif;
@@ -22,8 +22,9 @@
     --spacing-lg: 4rem;
     --spacing-xl: 5rem;
 
-    --shadow-hard: 4px 4px 0px var(--brand-black);
-    --border-thick: 3px solid var(--brand-black);
+    --shadow-hard: 6px 6px 0px var(--brand-black);
+    --border-thick: 3px solid var(--brand-white);
+    /* White borders */
 }
 
 * {
@@ -40,9 +41,9 @@ body {
     overflow-x: hidden;
     min-height: 100vh;
     background-image:
-        linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
-    background-size: 40px 40px;
+        linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
 }
 
 /* Floating Shapes */
@@ -118,25 +119,25 @@ body {
 
 /* Hero Section */
 .hero {
-    text-align: center;
+    text-align: left;
     position: relative;
+    padding: var(--spacing-lg) 0;
 }
 
 .pill-badge {
     display: inline-block;
     padding: 10px 24px;
-    background: #E8A89A;
-    /* Dusty Pink/Brown from top bar */
+    background: var(--brand-white);
     border: var(--border-thick);
     border-radius: 50px;
     font-family: var(--font-heading);
     font-weight: 700;
     color: var(--brand-black);
+    /* Contrast */
     margin-bottom: var(--spacing-md);
     box-shadow: var(--shadow-hard);
     position: relative;
     top: -10px;
-    /* Slight offset */
 }
 
 .main-title {
@@ -145,30 +146,42 @@ body {
     font-weight: 900;
     line-height: 1.1;
     margin-bottom: var(--spacing-sm);
-    color: var(--brand-orange);
+    color: var(--brand-white);
+    /* White Title */
     text-transform: uppercase;
     text-transform: uppercase;
-    text-shadow: 2px 2px 0px var(--brand-black);
+    text-shadow: 4px 4px 0px var(--brand-black);
+    /* Hard shadow for legibility */
     min-height: 1.1em;
     /* Prevent layout shift */
 }
 
-.main-title.cursor-blink::after {
-    content: '|';
-    animation: blink 1s step-end infinite;
-    color: var(--brand-orange);
+/* Text Animation */
+/* Text Animation */
+.text-motion {
+    display: inline-block;
+    /* Inline block for span */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    width: 250px;
+    /* Fixed width to prevent shifting */
+    text-align: left;
+    vertical-align: bottom;
+    /* Align with text */
 }
 
-@keyframes blink {
+.fade-out-up {
+    opacity: 0;
+    transform: translateY(-20px);
+}
 
-    0%,
-    100% {
-        opacity: 1;
-    }
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+}
 
-    50% {
-        opacity: 0;
-    }
+.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .amp {
@@ -180,9 +193,9 @@ body {
 .subtitle {
     font-size: 1.25rem;
     font-weight: 500;
-    color: var(--text-primary);
+    color: var(--brand-white);
     max-width: 600px;
-    margin: 0 auto var(--spacing-md);
+    margin: 0 0 var(--spacing-md) 0;
 }
 
 .highlight-marker {
@@ -214,17 +227,17 @@ body {
 /* Date Bar */
 .event-meta {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     margin-top: var(--spacing-md);
 }
 
 .date-bar {
-    background: var(--brand-purple);
-    color: #fff;
+    background: var(--brand-yellow);
+    color: var(--brand-black);
     padding: 16px 40px;
     border-radius: 12px;
     font-family: var(--font-heading);
-    font-weight: 700;
+    font-weight: 800;
     font-size: 1.2rem;
     display: flex;
     align-items: center;
@@ -236,9 +249,9 @@ body {
 }
 
 .date-divider {
-    width: 2px;
+    width: 3px;
     height: 24px;
-    background: rgba(255, 255, 255, 0.5);
+    background: var(--brand-black);
 }
 
 /* Sessions Grid */
@@ -251,43 +264,51 @@ body {
 
 .session-card {
     background: var(--bg-card);
-    border: var(--border-thick);
-    border-radius: 20px;
-    padding: 0;
+    border: 3px solid var(--brand-black);
+    /* Black border for pop art look on white card */
+    border-radius: 30px;
+    /* More rounded like poster */
+    padding: 1rem;
+    /* Inner padding like a frame */
     display: flex;
     flex-direction: column;
     box-shadow: var(--shadow-hard);
     transition: transform 0.2s ease;
     overflow: hidden;
+    position: relative;
+    color: var(--brand-black);
+    /* Default dark text */
 }
 
 .session-card:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0px var(--brand-black);
+    transform: translate(-4px, -4px);
+    box-shadow: 10px 10px 0px var(--brand-black);
 }
 
 .card-header {
     padding: var(--spacing-md);
-    background: var(--bg-card);
-    border-bottom: var(--border-thick);
+    background: transparent;
+    border-bottom: 3px solid var(--brand-black);
+    /* Explicit black border */
     text-align: center;
 }
 
-/* Speaker Photo Frame (Now Circular) */
+/* Speaker Photo Frame */
 .speaker-photo-frame {
-    width: 120px;
-    height: 120px;
+    width: 140px;
+    height: 140px;
     margin: 0 auto var(--spacing-sm);
     border-radius: 50%;
-    /* Circle */
+    /* Perfect circle */
     overflow: hidden;
-    border: var(--border-thick);
-    background: #fff;
+    border: 3px solid var(--brand-black);
+    /* Border definition */
+    background: var(--brand-white);
     position: relative;
+    /* Removed padding for tight fit */
 }
 
 .speaker-photo-frame::after {
-    /* Remove checker pattern for cleaner circle look */
     content: none;
 }
 
@@ -295,6 +316,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 50%;
 }
 
 .card-body {
@@ -302,6 +324,8 @@ body {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    text-align: left;
+    /* Revert to left align */
 }
 
 .session-tag {
@@ -315,6 +339,10 @@ body {
     margin-bottom: var(--spacing-sm);
     border-radius: 4px;
     align-self: flex-start;
+    /* Revert to start */
+    transform: none;
+    /* Remove rotation */
+    box-shadow: none;
 }
 
 .tag-openclaw {
@@ -336,34 +364,39 @@ body {
 }
 
 .session-desc {
-    color: var(--text-secondary);
+    color: #4A4A4A;
     margin-bottom: var(--spacing-md);
     font-size: 1rem;
     flex-grow: 1;
+    opacity: 1;
+    /* Darker grey */
 }
 
 .speaker-name {
     font-weight: 800;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: var(--brand-black);
     margin-bottom: 2px;
 }
 
 .speaker-role {
     font-size: 0.9rem;
-    color: var(--text-secondary);
+    color: #666;
+    /* Grey text */
     margin-bottom: var(--spacing-sm);
+    opacity: 1;
 }
 
 .speaker-socials {
     display: flex;
     justify-content: center;
     gap: 12px;
-    margin-bottom: var(--spacing-md);
+    margin-bottom: 0;
+    /* Adjusted */
 }
 
 .social-icon {
-    color: var(--text-secondary);
+    color: var(--brand-black);
     transition: color 0.2s ease, transform 0.2s ease;
 }
 
@@ -383,7 +416,8 @@ body {
     text-decoration: none;
     font-weight: 700;
     font-family: var(--font-heading);
-    border: var(--border-thick);
+    border: 3px solid var(--brand-black);
+    /* Explicit black background for buttons */
     cursor: pointer;
     transition: all 0.2s ease;
     text-transform: uppercase;
@@ -392,37 +426,23 @@ body {
 }
 
 .btn-secondary {
-    background: #fff;
+    background: var(--brand-white);
     color: var(--brand-black);
     box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    border: 3px solid var(--brand-black);
 }
 
 .btn-secondary:hover {
-    background: #f9f9f9;
+    background: #f0f0f0;
     transform: translateY(-2px);
     box-shadow: 4px 4px 0px var(--brand-black);
 }
 
-.btn-primary {
-    background: var(--brand-purple);
-    color: #fff;
-    box-shadow: 4px 4px 0px var(--brand-black);
-    /* Matching small button shadow */
-}
-
-.btn-primary:hover {
-    background: #4b1bc4;
-    transform: translateY(-2px);
-    box-shadow: 4px 4px 0px var(--brand-black);
-    /* Consistent shadow */
-}
-
-
-
-/* Footer */
 .footer {
     text-align: center;
-    color: var(--text-secondary);
+    color: var(--brand-white);
+    opacity: 0.8;
     font-size: 0.9rem;
     padding-bottom: var(--spacing-md);
     font-weight: 500;
@@ -430,7 +450,7 @@ body {
 }
 
 .footer a {
-    color: var(--brand-purple);
+    color: var(--brand-yellow);
     text-decoration: none;
     font-weight: 700;
 }
